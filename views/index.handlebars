@@ -1,0 +1,49 @@
+<div style="position: relative; left: 400px;">
+  <h1 style="position: relative; left: 140px;">Eat Da Burger!</h1>
+  <img id="burger" style="height: 200px; position: relative; left: 140px;" src="https://media.giphy.com/media/yYc5L3vhTWeBi/giphy.gif">
+  <div id="burger-field">
+
+    {{#each burgers}}
+    <li>{{this.burger_name}}</li>
+    <button class="devour" id={{this.burger_name}}>
+      Devour!
+    </button>
+    {{/each}}
+  </div>
+  <input id="input" style="position: relative; top: 50px; left: 150px;" type="text" rows="4" cols="50" name="fname" placeholder="Enter Burger Name">
+  <br>
+
+  <button id="button" style="position: relative; top: 70px; left: 200px;">
+    Burger Button
+  </button>
+</div>
+
+<script>
+
+  $(document).ready(function () {
+    //var burgerIteration = 1;
+
+
+    //burgerIteration = burgerIteration + 1;
+    //var burgerName = document.getElementById("input").value;
+    //var burgerId = ("#burgerId") + (burgerIteration);
+    //console.log(("Burger Iteration: ") + burgerIteration);
+
+    //console.log(("Burger Name: ") + burgerName);
+    //console.log("Burger ID: " + burgerId);
+
+    //$("#burger-field").append(("<div style='background-color:red; width:250px;'>") + ("<h2>") + burgerName + ("</h2>") + ("<button id='devour'>") + ("Devour It!") + ("</button>") + ("</div>")).attr('id', 'newID');
+    //console.log($);
+    $("button.devour").on("click", function () {
+      $.ajax({
+        method: "POST",
+        url: "devoured/" + $(). 
+
+      })
+
+      console.log(this);
+    });
+  });
+
+
+</script>

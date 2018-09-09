@@ -4,10 +4,13 @@
   <div id="burger-field">
 
     {{#each burgers}}
-    <li>{{this.burger_name}}</li>
-    <button class="devour" id={{this.burger_name}}>
-      Devour!
-    </button>
+    <div class="division" style=>
+      <p>{{this.burger_name}}</p>
+      <button class="devour" id={{this.burger_name}}>
+        Devour!
+      </button>
+    </div>
+
     {{/each}}
   </div>
   <input id="input" style="position: relative; top: 50px; left: 150px;" type="text" rows="4" cols="50" name="fname" placeholder="Enter Burger Name">
@@ -35,14 +38,31 @@
     //$("#burger-field").append(("<div style='background-color:red; width:250px;'>") + ("<h2>") + burgerName + ("</h2>") + ("<button id='devour'>") + ("Devour It!") + ("</button>") + ("</div>")).attr('id', 'newID');
     //console.log($);
     $("button.devour").on("click", function () {
+      // $.ajax({
+      //   method: "POST",
+      //   url: "devoured/" + $(). 
+
+      //  })
+
+      //  console.log(this);
+
+      console.log("devour");
+    });
+
+    $("#button").on("click", function () {
+      var burgerName = $("#input").val()
+      console.log("Burger");
       $.ajax({
         method: "POST",
-        url: "devoured/" + $(). 
-
+        url: "newBurger",
+        data: { name: burgerName}
       })
+        .done(function (msg) {
+          alert("Data Saved: " + msg);
+        });
+    }
 
-      console.log(this);
-    });
+    )
   });
 
 

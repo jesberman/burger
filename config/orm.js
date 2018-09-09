@@ -79,7 +79,8 @@ var orm = {
 
     updateOne: function () {
 
-    }
+    },
+
 
 };
 

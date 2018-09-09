@@ -13,5 +13,12 @@ router.get("/", function (req, res) {
     });
 });
 
+router.post("/newBurger", function (req, res) {
+    burger.create();
+}
+
+
+)
+
 module.exports = router;
 

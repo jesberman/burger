@@ -7,9 +7,9 @@ var burger = {
         cb(res);
       });
     },
-    // The variables cols and vals are arrays.
+    // The variables cols and vals are arrays.  (Hector says to get rid of some of the things on line 11)
     create: function(cols, vals, cb) {
-      orm.create(cols, vals, function(res) {
+      orm.insertOne(cols, vals, function(res) {
         cb(res);
       });
     },

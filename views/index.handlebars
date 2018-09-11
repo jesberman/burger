@@ -6,7 +6,7 @@
     {{#each burgers}}
     <div class="division" style=>
       <p>{{this.burger_name}}</p>
-      <button class="devour" id={{this.burger_name}}>
+      <button class="devour" id={{this.id}}>
         Devour!
       </button>
     </div>
@@ -38,12 +38,17 @@
     //$("#burger-field").append(("<div style='background-color:red; width:250px;'>") + ("<h2>") + burgerName + ("</h2>") + ("<button id='devour'>") + ("Devour It!") + ("</button>") + ("</div>")).attr('id', 'newID');
     //console.log($);
     $("button.devour").on("click", function () {
-      // $.ajax({
-      //   method: "POST",
-      //   url: "devoured/" + $(). 
-
-      //  })
-
+      $.ajax({
+        method: "PUT",
+        // url: "/api/devour" + $(). 
+        url: "/api/devour/" + $(this).attr("id"),
+        data: { devoured: "1" }
+      })
+        .done(function (msg) {
+          //alert("Data Saved: " + msg);
+          console.log(msg);
+          window.location.reload();
+        });
       //  console.log(this);
 
       console.log("devour");
@@ -51,14 +56,16 @@
 
     $("#button").on("click", function () {
       var burgerName = $("#input").val()
-      console.log("Burger");
+      //console.log("Burger");
       $.ajax({
         method: "POST",
-        url: "newBurger",
-        data: { name: burgerName}
+        url: "api/new",
+        data: { burger_name: burgerName }
       })
         .done(function (msg) {
-          alert("Data Saved: " + msg);
+          //alert("Data Saved: " + msg);
+          console.log(msg);
+          window.location.reload();
         });
     }
 

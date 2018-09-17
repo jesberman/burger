@@ -25,9 +25,21 @@ router.post("/api/new", function (req, res) {
 router.put("/api/devour/:id", function (req, res) {
     console.log(req.body);
     // burger.update(["devoured"], ["1"], "WHERE id =  " + req.params.ids,
-    burger.update({devoured: true},"WHERE id =  " + req.params.id), 
+    //var table= [
+    //    "burgers"
+    //];
+    //var value =[
+    //    req.body
+    //];
+    //var condition = "id = " + req.params.id;
+    //var callback = (result) => {
+    //    res.json({ id: result.insertId });
+
+    //} 
+    //burger.update(table, value, condition, callback);  
+     burger.update({devoured: true},"id =  " + req.params.id), 
         function (result) {
-            res.json({ id: result.insertId });
+           res.json({ id: result.insertId });
         };
 });
 

@@ -1,24 +1,51 @@
 <div style="position: relative; left: 400px;">
   <h1 style="position: relative; left: 140px;">Eat Da Burger!</h1>
   <img id="burger" style="height: 200px; position: relative; left: 140px;" src="https://media.giphy.com/media/yYc5L3vhTWeBi/giphy.gif">
-  <div id="burger-field">
 
-    {{#each burgers}}
-    <div class="division" style=>
-      <p>{{this.burger_name}}</p>
-      <button class="devour" id={{this.id}}>
-        Devour!
-      </button>
-    </div>
-
-    {{/each}}
-  </div>
-  <input id="input" style="position: relative; top: 50px; left: 150px;" type="text" rows="4" cols="50" name="fname" placeholder="Enter Burger Name">
+  <input id="input" style="position: relative; top: 50px; left: -50px;" type="text" rows="4" cols="50" name="fname" placeholder="Enter Burger Name">
   <br>
 
   <button id="button" style="position: relative; top: 70px; left: 200px;">
     Burger Button
   </button>
+
+  <div id="burger-field">
+    <div class="row">
+
+
+      <div class="column" id="c1">
+        <h1>Fresh</h1>
+
+        {{#each burgers}} {{#unless devoured}}
+        <div class="not-devoured" style=>
+          <p>{{this.burger_name}}</p>
+          <button class="devour" id={{this.id}}>
+            Devour!
+          </button>
+        </div>
+
+        {{/unless}} {{/each}}
+      </div>
+
+
+      <div class="column" id="c2">
+        <h1>Devoured</h1>
+
+        {{#each burgers}} {{#if devoured}}
+
+        <div class="devoured" style=>
+          <p>{{this.burger_name}}</p>
+          <button class="undevour" id={{this.id}}>
+            Un-Devour!
+          </button>
+        </div>
+
+        {{/if}} {{/each}}
+
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -51,8 +78,48 @@
         });
       //  console.log(this);
 
-      console.log("devour");
+      //console.log("devour");
+      // var x = 2;
+      // if (x === 1) {
+      //   console.log("Devoured equals false");
+      // }
+      //else {
+      //  console.log("Devoured equals true");
+      //{{#each burgers}}
+      //  $(".devour").css("color: red;");
+      //  $(".division").css("background-color: red;");
+      // {{/each}}
+      // }
     });
+
+    $("button.undevour").on("click", function () {
+      $.ajax({
+        method: "PUT",
+        // url: "/api/devour" + $(). 
+        url: "/api/devour/" + $(this).attr("id"),
+        data: { devoured: "0" }
+      })
+        .done(function (msg) {
+          //alert("Data Saved: " + msg);
+          console.log(msg);
+          window.location.reload();
+        });
+      //  console.log(this);
+
+      //console.log("devour");
+      // var x = 2;
+      // if (x === 1) {
+      //   console.log("Devoured equals false");
+      // }
+      //else {
+      //  console.log("Devoured equals true");
+      //{{#each burgers}}
+      //  $(".devour").css("color: red;");
+      //  $(".division").css("background-color: red;");
+      // {{/each}}
+      // }
+    });
+
 
     $("#button").on("click", function () {
       var burgerName = $("#input").val()
@@ -67,9 +134,7 @@
           console.log(msg);
           window.location.reload();
         });
-    }
-
-    )
+    })
   });
 
 

@@ -71,25 +71,14 @@
         url: "/api/devour/" + $(this).attr("id"),
         data: { devoured: "1" }
       })
-        .done(function (msg) {
+        .then(function (msg) {
           //alert("Data Saved: " + msg);
           console.log(msg);
-          window.location.reload();
+          console.log('hello ta');
+          {{!-- location.reload(); --}}
+          res.redirect("/");
         });
-      //  console.log(this);
 
-      //console.log("devour");
-      // var x = 2;
-      // if (x === 1) {
-      //   console.log("Devoured equals false");
-      // }
-      //else {
-      //  console.log("Devoured equals true");
-      //{{#each burgers}}
-      //  $(".devour").css("color: red;");
-      //  $(".division").css("background-color: red;");
-      // {{/each}}
-      // }
     });
 
     $("button.undevour").on("click", function () {

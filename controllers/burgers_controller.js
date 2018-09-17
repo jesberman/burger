@@ -23,7 +23,7 @@ router.post("/api/new", function (req, res) {
 });
 
 router.put("/api/devour/:id", function (req, res) {
-    console.log(req.body);
+    console.log("Body: " + req.body);
     // burger.update(["devoured"], ["1"], "WHERE id =  " + req.params.ids,
     //var table= [
     //    "burgers"
@@ -37,10 +37,11 @@ router.put("/api/devour/:id", function (req, res) {
 
     //} 
     //burger.update(table, value, condition, callback);  
-     burger.update({devoured: true},"id =  " + req.params.id), 
+     burger.update(req.body,"id =  " + req.params.id), 
         function (result) {
            res.json({ id: result.insertId });
         };
+
 });
 
 module.exports = router;

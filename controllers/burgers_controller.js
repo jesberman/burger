@@ -37,14 +37,14 @@ router.put("/api/devour/:id", function (req, res) {
 
     //} 
     //burger.update(table, value, condition, callback);  
-    console.log("burger_controller" + req.params.id)
-     burger.update(req.body,"id =  " + req.params.id), 
-        function (result) {
-            console.log("updated?  " + result);
-            res.redirect("/");
+    console.log("burger_controller" + req.params.id);
+    //burger.update(req.body,"id =  " + req.params.id), 
+    burger.update(req.body, "id =  " + req.params.id, function (result) {
+        console.log("updated?  " + result);
+        //res.redirect("/");
+        res.sendStatus(200);
         //    res.json({ id: result.insertId });
-        };
-
+    });
 });
 
 module.exports = router;

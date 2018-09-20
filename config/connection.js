@@ -3,39 +3,23 @@ var mysql = require('mysql');
 
 
 
-var connection = mysql.createConnection({
-    
-    host: "localhost",
-
-    // Port
-    port: 3306,
-
-    //  username
-    user: "root",
-
-    //  password
-    password: "Bloodraven36",
-    database: "burgers_db"
-});
+var connection;
 
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 } else {
     connection = mysql.createConnection({
-        host: "localhost",
+        host: 'localhost',
         // Port
         port: 3306,
         //  username
-        user: "root",
+        user: 'root',
         //  password
-        password: "Bloodraven36",
-        database: "burgers_db"
-    }
-
-    )
-
-}
+        password: 'Bloodraven36',
+        database: 'burgers_db'
+    });
+};
 
 
 

@@ -1,8 +1,13 @@
-
+//imports the express module
 var express = require("express");
-var burger = require("../models/burger.js")
+
+//imports the burger.js file and sets it equal to the "burger" variable
+var burger = require("../models/burger.js");
+
+//sets the "router" variable
 var router = express.Router();
 
+//sets the home page of the app as a get requst, displaying the index.handlbars file
 router.get("/", function (req, res) {
     burger.all(function (data) {
         var hbsObject = {
@@ -13,6 +18,7 @@ router.get("/", function (req, res) {
     });
 });
 
+//sets the "/api/new" route as a post route capable of creating new entries in the database
 router.post("/api/new", function (req, res) {
     console.log(req.body);
     burger.create(["burger_name", "devoured"], [
@@ -22,30 +28,16 @@ router.post("/api/new", function (req, res) {
     });
 });
 
+//sets the "/api/devour/:id" route as a put route capable of altering corresponding data of specific entries
 router.put("/api/devour/:id", function (req, res) {
     console.log("Body: " + req.body);
-    // burger.update["devoured"], ["1"], "WHERE id =  " + req.params.ids,
-    //var table= [
-    //    "burgers"
-    //];
-    //var value =[
-    //    req.body
-    //];
-    //var condition = "id = " + req.params.id;
-    //var callback = (result) => {
-    //    res.json({ id: result.insertId });
-
-    //} 
-    //burger.update(table, value, condition, callback);  
     console.log("burger_controller" + req.params.id);
-    //burger.update(req.body,"id =  " + req.params.id), 
     burger.update(req.body, "id =  " + req.params.id, function (result) {
         console.log("updated?  " + result);
-        //res.redirect("/");
         res.sendStatus(200)
-        //    res.json({ id: result.insertId });
-    })
+    });
 });
 
+//allows the "router" variable to be exported
 module.exports = router;
 

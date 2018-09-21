@@ -1,13 +1,14 @@
+//imports the "orm.js" file and sets it equal to the "orm" variable
 var orm = require("../config/orm.js");
 
-
+//creates the "burger" object with properties designed to select entries in a database,
+//create new entries, update those entires, or delete those entries
 var burger = {
     all: function(cb) {
       orm.selectAll(function(res) {
         cb(res);
       });
     },
-    // The variables cols and vals are arrays.  (Hector says to get rid of some of the things on line 11)
     create: function(cols, vals, cb) {
       orm.insertOne(cols, vals, function(res) {
         cb(res);
@@ -25,7 +26,7 @@ var burger = {
     }
   };
 
-
+//allows the "burger" variable to be exported
   module.exports = burger;
 
   

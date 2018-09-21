@@ -1,4 +1,3 @@
-
 .devoured{
     background-color: blueviolet;
     margin-bottom: 20px; 
@@ -18,7 +17,6 @@
     border: 3px solid black; 
     width:200px; height: 100px; 
     font-weight: bold;
-
 }
 
 
@@ -31,7 +29,7 @@
     float: left;
     width: 400px;
     padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
+    height: 300px; 
 }
 
 /* Clear floats after the columns */
@@ -50,8 +48,6 @@
 
 #c2 {
     position: relative;
-
     top: 100px;
-
 }
 
